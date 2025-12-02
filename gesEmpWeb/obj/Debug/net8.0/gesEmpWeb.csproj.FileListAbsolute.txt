@@ -102,3 +102,4 @@ C:\Users\mouha\Desktop\c#\gesEmpWeb\gesEmpWeb\obj\Debug\net8.0\refint\gesEmpWeb.
 C:\Users\mouha\Desktop\c#\gesEmpWeb\gesEmpWeb\obj\Debug\net8.0\gesEmpWeb.pdb
 C:\Users\mouha\Desktop\c#\gesEmpWeb\gesEmpWeb\obj\Debug\net8.0\gesEmpWeb.genruntimeconfig.cache
 C:\Users\mouha\Desktop\c#\gesEmpWeb\gesEmpWeb\obj\Debug\net8.0\ref\gesEmpWeb.dll
+C:\Users\mouha\Desktop\c#\gesEmpWeb\gesEmpWeb\obj\Debug\net8.0\gesEmpWeb.sourcelink.json

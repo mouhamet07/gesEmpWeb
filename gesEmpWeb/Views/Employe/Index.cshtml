@@ -1,12 +1,12 @@
 @{
-    ViewData["Title"] = "Liste des departements";
+    ViewData["Title"] = "Liste des Employes";
 }
 
     <div class="container-fluid py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Liste des departements</h2>
-            <a asp-page="/Departement/Create" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i>Nouveau departement
+            <h2 class="mb-0">Liste des Employes</h2>
+            <a asp-page="/Employe/Create" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Nouveau Employe
             </a>
         </div>
 
@@ -15,11 +15,11 @@
                 <!-- Filtres -->
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Rechercher un departement..." />
+                        <input type="text" class="form-control" placeholder="Rechercher un Employe..." />
                     </div>
                     <div class="col-md-3">
                         <select class="form-select">
-                            <option>Type de departement</option>
+                            <option>Type de Employe</option>
                             <option>Chèque</option>
                             <option>Épargne</option>
                         </select>
@@ -39,7 +39,7 @@
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th>N° departement</th>
+                                <th>N° Employe</th>
                                 <th>Titulaire</th>
                                 <th>Type</th>
                                 <th>Solde</th>
