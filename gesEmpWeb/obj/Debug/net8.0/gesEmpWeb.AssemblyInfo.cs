@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gesEmpWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d207cd0e4829d8cc200d5c92e239947d4d7d3c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68b0711b8a8c72e8383e8d2251543d4a15667738")]
 [assembly: System.Reflection.AssemblyProductAttribute("gesEmpWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gesEmpWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

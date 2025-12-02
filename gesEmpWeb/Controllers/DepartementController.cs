@@ -1,19 +1,31 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http.Metadata;
+using gesEmpWeb.Services;
 using gesEmpWeb.Models;
 
 namespace gesEmpWeb.Controllers
 {
     public class DepartementController : Controller
     {
-        public DepartementController()
+        
+        private readonly IDepartementService _departementService;
+        private readonly ILogger<DepartementController> _logger;
+        public DepartementController(ILogger<DepartementController> logger, IDepartementService departementService)
         {
+            _departementService = departementService;
+            _logger = logger;
         }
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var departements = _departementService.GetAllDepartements();
+                return View(departements);
+            }catch(Exception)
+            {
+                _logger.LogError("Erreur lors de l'affichage des départements");
+                return View(new List<Departement>());
+            } 
         }
         [HttpPost]
         public IActionResult Create()

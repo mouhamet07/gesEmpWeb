@@ -1,138 +1,105 @@
 @{
     ViewData["Title"] = "Liste des departements";
 }
+@model IEnumerable<Departement>
 
-    <div class="container-fluid py-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Liste des departements</h2>
-            <a asp-page="/Departement/Create" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i>Nouveau departement
-            </a>
-        </div>
+<div class="container mt-4">
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <!-- Filtres -->
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Rechercher un departement..." />
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option>Type de departement</option>
-                            <option>Chèque</option>
-                            <option>Épargne</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option>Trier par</option>
-                            <option>Date de création</option>
-                            <option>Solde</option>
-                            <option>Nom</option>
-                        </select>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Liste des departements</h2>
+    </div>
+
+    <div class="card border-0 mb-4 shadow-sm p-3">
+        <div class="card-body">
+            <div class="row g-3 d-flex">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Ajouter un departement..." />
                     </div>
                 </div>
-
-                <!-- Tableau responsive -->
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>N° departement</th>
-                                <th>Titulaire</th>
-                                <th>Type</th>
-                                <th>Solde</th>
-                                <th>Date de création</th>
-                                <th>Statut</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>C00123456</strong></td>
-                                <td>Amadou Diallo</td>
-                                <td><span class="badge badge-epargne">Épargne</span></td>
-                                <td><strong>1 250 000 FCFA</strong></td>
-                                <td>15/03/2023</td>
-                                <td>
-                                    <i class="fas fa-ban status-bloque me-1"></i>
-                                    <span class="status-bloque fw-bold">Bloqué (30j)</span>
-                                </td>
-                                <td class="text-center action-icons">
-                                    <a href="#" title="Voir"><i class="fas fa-eye"></i></a>
-                                    <a href="#" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="#" title="Bloquer/Débloquer"><i class="fas fa-lock"></i></a>
-                                    <a href="#" title="Supprimer" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>C00123457</strong></td>
-                                <td>Fatou Ndiaye</td>
-                                <td><span class="badge badge-cheque">Chèque</span></td>
-                                <td><strong>3 750 000 FCFA</strong></td>
-                                <td>02/01/2023</td>
-                                <td>
-                                    <i class="fas fa-check-circle status-actif me-1"></i>
-                                    <span class="status-actif fw-bold">Actif</span>
-                                </td>
-                                <td class="text-center action-icons">
-                                    <a href="#" title="Voir"><i class="fas fa-eye"></i></a>
-                                    <a href="#" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="#" title="Bloquer"><i class="fas fa-lock-open"></i></a>
-                                    <a href="#" title="Supprimer" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>C00123458</strong></td>
-                                <td>Moussa Sow</td>
-                                <td><span class="badge badge-epargne">Épargne</span></td>
-                                <td><strong>850 000 FCFA</strong></td>
-                                <td>10/04/2023</td>
-                                <td>
-                                    <i class="fas fa-check-circle status-actif me-1"></i>
-                                    <span class="status-actif fw-bold">Actif</span>
-                                </td>
-                                <td class="text-center action-icons">
-                                    <a href="#" title="Voir"><i class="fas fa-eye"></i></a>
-                                    <a href="#" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="#" title="Bloquer"><i class="fas fa-lock-open"></i></a>
-                                    <a href="#" title="Supprimer" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>C00123459</strong></td>
-                                <td>Aïssatou Diop</td>
-                                <td><span class="badge badge-cheque">Chèque</span></td>
-                                <td><strong>2 100 000 FCFA</strong></td>
-                                <td>22/02/2023</td>
-                                <td>
-                                    <i class="fas fa-check-circle status-actif me-1"></i>
-                                    <span class="status-actif fw-bold">Actif</span>
-                                </td>
-                                <td class="text-center action-icons">
-                                    <a href="#" title="Voir"><i class="fas fa-eye"></i></a>
-                                    <a href="#" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="#" title="Bloquer"><i class="fas fa-lock-open"></i></a>
-                                    <a href="#" title="Supprimer" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-secondary" type="button">Enregistrer</button>
                 </div>
-
-                <!-- Pagination -->
-                <nav aria-label="Pagination">
-                    <ul class="pagination justify-content-center mt-4">
-                        <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
 
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <div class="table-responsive text-center">
 
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Date de création</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5">
+                                    <div class="alert alert-info mb-0" role="alert">
+                                        Aucun departement disponible.
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var departement in Model)
+                            {
+                                <tr>
+                                    <td><strong>@departement.Id</strong></td>
+                                    <td>@departement.Name</td>
+                                    <td>@departement.DateCreation.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @if (departement.IsActive)
+                                        {
+                                            <span class="badge bg-info">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Archive</span>
+                                        }
+                                    </td>
+                                    <td class="text-center action-icons text-decoration-none">
+                                        <a class="badge bg-info text-decoration-none" href="#" title="Employes">
+                                            <i class="fas fa-eye"></i> Employes
+                                        </a>
+                                        <a class="badge bg-warning text-decoration-none" href="#" title="Modifier">
+                                            <i class="fas fa-edit"></i> Modifier
+                                        </a>
+                                        <a class="badge bg-danger text-decoration-none" href="#" title="Archiver">
+                                            <i class="fas fa-trash-alt"></i> Archiver
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="py-2">
+        <nav aria-label="Pagination" class="d-flex justify-content-center">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">Précédent</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
