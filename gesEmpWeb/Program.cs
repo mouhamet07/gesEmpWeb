@@ -5,6 +5,7 @@ using gesEmpWeb.Services.Impl;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GesEmpDbContext>();
 builder.Services.AddScoped<IDepartementService, DepartementService>();
+builder.Services.AddScoped<IEmployeService, EmployeService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

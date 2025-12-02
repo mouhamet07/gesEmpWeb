@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Liste des employes";
 }
-
+@model IEnumerable<Employe>
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Liste des employes</h2>
@@ -22,17 +22,17 @@
                 </div>
                 <div class="col-md-3">
                     <select class="form-select">
-                        <option>Type de employe</option>
-                        <option>Chèque</option>
-                        <option>Épargne</option>
+                        <option>Statut</option>
+                        <option>Active</option>
+                        <option><i class="fa fa-file-archive-o" aria-hidden="true"></i></option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <select class="form-select">
-                        <option>Trier par</option>
-                        <option>Date de création</option>
-                        <option>Solde</option>
-                        <option>Nom</option>
+                        <option>Departement</option>
+                        <option>d1</option>
+                        <option>d2</option>
+                        <option>d3</option>
                     </select>
                 </div>
             </div>
@@ -46,32 +46,59 @@
                     <thead class="table-light">
                         <tr>
                             <th>ID</th>
-                            <th>Nom</th>
-                            <th>Nbr Employes</th>
+                            <th>Numero</th>
+                            <th>Nom Complet</th>
+                            <th>Telephone</th>
                             <th>Date de création</th>
                             <th>Statut</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td>Dept1</td>
-                            <td><span class="badge bg-primary">120</span></td>
-                            <td>15/03/2023</td>
-                            <td><span class="badge bg-info">Active</span></td>
-                            <td class="text-center action-icons text-decoration-none">
-                                <a class="badge bg-info text-decoration-none" href="#" title="Employes">
-                                    <i class="fas fa-eye"></i> Employes
-                                </a>
-                                <a class="badge bg-warning text-decoration-none" href="#" title="Modifier">
-                                    <i class="fas fa-edit"></i> Modifier
-                                </a>
-                                <a class="badge bg-danger text-decoration-none" href="#" title="Archiver">
-                                    <i class="fas fa-trash-alt"></i> Archiver
-                                </a>
-                            </td>
-                        </tr>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="7">
+                                    <div class="alert alert-info mb-0" role="alert">
+                                        Aucun employe disponible.
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var employe in Model)
+                            {
+                                <tr>
+                                    <td><strong>@employe.Id</strong></td>
+                                    <td>@employe.Numero</td>
+                                    <td>@employe.NomComplet</td>
+                                    <td>@employe.Telephone</td>
+                                    <td>@employe.DateCreation.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @if (employe.IsActive)
+                                        {
+                                            <span class="badge bg-info">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Archive</span>
+                                        }
+                                    </td>
+                                    <td class="text-center action-icons text-decoration-none">
+                                        <a class="badge bg-info text-decoration-none" href="#" title="Infos">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a class="badge bg-warning text-decoration-none" href="#" title="Modifier">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="badge bg-danger text-decoration-none" href="#" title="Archiver">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -82,9 +109,17 @@
         <nav aria-label="Pagination" class="d-flex justify-content-center">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled"><a class="page-link" href="#">Précédent</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                @for (int i = 1; i <= ViewBag.NbrPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link"
+                        asp-action="Index"
+                        asp-route-page="@i"
+                        asp-route-deptId="@ViewBag.DepartementId">
+                            @i
+                        </a>
+                    </li>
+                }
                 <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
             </ul>
         </nav>

@@ -15,17 +15,22 @@ namespace gesEmpWeb.Controllers
             _logger = logger;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             try
             {
-                var departements = _departementService.GetAllDepartements();
+                int total = _departementService.CountDepartements(page);
+                int nbrPages = (int)Math.Ceiling((double)total / 4);
+                var departements = _departementService.GetAllDepartements(page);
+                ViewBag.NbrPages = nbrPages;
+                ViewBag.CurrentPage = page;
                 return View(departements);
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 _logger.LogError("Erreur lors de l'affichage des départements");
                 return View(new List<Departement>());
-            } 
+            }
         }
         [HttpPost]
         public IActionResult Create()

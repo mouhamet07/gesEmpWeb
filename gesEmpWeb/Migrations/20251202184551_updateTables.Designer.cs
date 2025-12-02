@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using gesEmpWeb.Data;
@@ -11,9 +12,11 @@ using gesEmpWeb.Data;
 namespace gesEmpWeb.Migrations
 {
     [DbContext(typeof(GesEmpDbContext))]
-    partial class GesEmpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251202184551_updateTables")]
+    partial class updateTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,6 +95,7 @@ namespace gesEmpWeb.Migrations
                         .HasForeignKey("DepartementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
                     b.Navigation("DepartementEmp");
                 });
 #pragma warning restore 612, 618
